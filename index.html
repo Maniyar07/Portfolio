@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sohel Maniyar - Data Science Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght=600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* General Styles */
@@ -46,6 +46,9 @@
             background-color: var(--background-color);
             padding: 1rem 0;
             border-bottom: 1px solid var(--card-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav {
@@ -127,24 +130,26 @@
             font-weight: 700;
         }
 
+        /* FIXED: Improved S-Letter Icon Style */
         .hero-image {
-            width: 250px;
-            height: 250px;
-            background-color: var(--card-color);
+            width: 200px; /* Smaller and more profile-like */
+            height: 200px;
+            background-color: var(--primary-color); /* Solid color background */
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 40px rgba(0, 188, 212, 0.4);
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
         }
 
         .hero-image .s-letter {
             font-family: var(--header-font);
-            font-size: 10rem;
+            font-size: 8rem;
             font-weight: 800;
-            color: var(--primary-color);
-            text-shadow: 0 0 10px var(--primary-color);
+            color: var(--background-color); /* Dark text on bright background */
         }
+        /* END FIXED S-Letter */
+
 
         .social-links {
             margin-top: 30px;
@@ -307,12 +312,12 @@
 
             .hero-image {
                 margin-bottom: 40px;
-                width: 200px;
-                height: 200px;
+                width: 150px;
+                height: 150px;
             }
 
             .hero-image .s-letter {
-                font-size: 8rem;
+                font-size: 6rem;
             }
 
             .social-links {
@@ -341,8 +346,8 @@
         <section id="hero">
             <div class="hero-content">
                 <h1>Hello, I'm <span class="highlight-text">SOHEL MANIYAR</span>.</h1>
-                [cite_start]<p>An aspiring <span class="highlight-text">Data Scientist</span> passionate about leveraging data-driven insights to create impactful solutions[cite: 5].</p>
-                [cite_start]<p>I am proficient in Python, SQL, Data Structures & Algorithms, and actively pursuing expertise in Machine Learning and AI[cite: 3, 4].</p>
+                <p>An aspiring **Data Scientist** passionate about leveraging data-driven insights to create impactful solutions.</p>
+                <p>I am proficient in **Python**, **SQL**, Data Structures & Algorithms, and actively pursuing expertise in Machine Learning and AI.</p>
 
                 <div class="social-links">
                     <a href="https://linkedin.com/in/sohel-maniyar" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -356,12 +361,16 @@
             </div>
         </section>
 
+        ---
+
         <section id="profile">
             <h2><i class="fas fa-user-circle"></i> Profile</h2>
-            [cite_start]<p>Proficient in Python programming and Data Structures & Algorithms with strong analytical skills[cite: 3].</p>
-            [cite_start]<p>Currently pursuing expertise in Data Science, Machine Learning, and AI, with hands-on practice in real-world problem solving[cite: 4].</p>
-            [cite_start]<p>My future goal is to grow into a skilled Senior Data Scientist[cite: 5].</p>
+            <p>Proficient in **Python** programming and **Data Structures & Algorithms** with strong analytical skills.</p>
+            <p>Currently pursuing expertise in Data Science, Machine Learning, and AI, with hands-on practice in real-world problem solving.</p>
+            <p>My future goal is to grow into a skilled Senior Data Scientist.</p>
         </section>
+
+        ---
 
         <section id="skills">
             <h2><i class="fas fa-tools"></i> Skills & Expertise</h2>
@@ -369,96 +378,100 @@
                 <div class="skill-group">
                     <h3>Programming Languages</h3>
                     <ul>
-                        [cite_start]<li>Python [cite: 9]</li>
-                        [cite_start]<li>SQL [cite: 9]</li>
+                        <li>**Python**</li>
+                        <li>**SQL**</li>
                     </ul>
                 </div>
                 <div class="skill-group">
                     <h3>Data Science & ML</h3>
                     <ul>
-                        [cite_start]<li>Exploratory Data Analysis (EDA) [cite: 10]</li>
-                        [cite_start]<li>Machine Learning [cite: 10]</li>
-                        [cite_start]<li>Scikit-learn [cite: 10]</li>
+                        <li>Exploratory Data Analysis (EDA)</li>
+                        <li>Machine Learning</li>
+                        <li>Scikit-learn</li>
                     </ul>
                 </div>
                 <div class="skill-group">
                     <h3>Python Libraries</h3>
                     <ul>
-                        [cite_start]<li>NumPy [cite: 11]</li>
-                        [cite_start]<li>Pandas [cite: 11]</li>
-                        [cite_start]<li>Matplotlib [cite: 11]</li>
-                        [cite_start]<li>Seaborn [cite: 11]</li>
+                        <li>NumPy</li>
+                        <li>Pandas</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
                     </ul>
                 </div>
                 <div class="skill-group">
                     <h3>Web Development & Tools</h3>
                     <ul>
-                        [cite_start]<li>Flask [cite: 12]</li>
-                        [cite_start]<li>HTML / CSS / JavaScript [cite: 12]</li>
-                        [cite_start]<li>GitHub [cite: 2]</li>
+                        <li>Flask</li>
+                        <li>HTML / CSS / JavaScript</li>
+                        <li>GitHub</li>
                     </ul>
                 </div>
                 <div class="skill-group">
                     <h3>Soft Skills</h3>
                     <ul>
-                        [cite_start]<li>Problem-solving [cite: 13]</li>
-                        [cite_start]<li>Communication [cite: 13]</li>
-                        [cite_start]<li>Teamwork [cite: 13]</li>
-                        [cite_start]<li>Time Management [cite: 13]</li>
+                        <li>Problem-solving</li>
+                        <li>Communication</li>
+                        <li>Teamwork</li>
+                        <li>Time Management</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        ---
+
         <section id="projects">
             <h2><i class="fas fa-project-diagram"></i> Key Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    [cite_start]<h3>Diabetes Risk Prediction Web Application [cite: 15]</h3>
-                    [cite_start]<p>A full-stack deployment of a binary classification machine learning model, utilizing Flask for the web service layer[cite: 16].</p>
+                    <h3>Diabetes Risk Prediction Web Application</h3>
+                    <p>A full-stack deployment of a **binary classification machine learning model**, utilizing Flask for the web service layer.</p>
                     <p>
                         **Key Achievements:**
                         <ul>
-                            [cite_start]<li>Designed and implemented a robust Flask application with dedicated routing (/, /predict) to serve the front-end and handle prediction requests[cite: 18].</li>
-                            [cite_start]<li>Successfully loaded a pre-trained Scikit-learn model and engineered the data pipeline to receive 8 distinct health features from the user[cite: 19].</li>
-                            [cite_start]<li>Managed deployment on PythonAnywhere, troubleshooting file path and server configuration issues for reliable availability[cite: 20].</li>
+                            <li>Designed and implemented a robust **Flask application** with dedicated routing to serve the front-end and handle prediction requests.</li>
+                            <li>Successfully loaded a pre-trained **Scikit-learn model** and engineered the data pipeline to receive 8 distinct health features from the user.</li>
+                            <li>Managed deployment on **PythonAnywhere**, troubleshooting configuration issues for reliable availability.</li>
                         </ul>
                     </p>
                     <p>
-                        [cite_start]**Tech Stack:** Python, Flask, Scikit-learn, NumPy, HTML/CSS, PythonAnywhere [cite: 17]
+                        **Tech Stack:** Python, Flask, Scikit-learn, NumPy, HTML/CSS, PythonAnywhere
                     </p>
                     <div class="project-links">
                         <a href="https://github.com/Maniyar07/Flask-Diabetes-Prediction-App" target="_blank" class="source-link">
-                            [cite_start]<i class="fab fa-github"></i> Source Code [cite: 21]
+                            <i class="fab fa-github"></i> Source Code
                         </a>
                         <a href="https://sohel08.pythonanywhere.com/" target="_blank" class="live-demo-btn">
-                            [cite_start]<i class="fas fa-play-circle"></i> **Live Demo** [cite: 22]
+                            <i class="fas fa-play-circle"></i> **Live Demo**
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        ---
+
         <section id="education">
             <h2><i class="fas fa-graduation-cap"></i> Education & Certificates</h2>
 
             <div class="education-list">
                 <div class="education-item">
-                    [cite_start]<h4>Bachelor Of Technology - 7.24 CGPA [cite: 7]</h4>
-                    <span>TPCT'S College of Engineering, Osmanabad | [cite_start]2021-2025 [cite: 7]</span>
+                    <h4>Bachelor Of Technology - 7.24 CGPA</h4>
+                    <span>TPCT'S College of Engineering, Osmanabad | 2021-2025</span>
                 </div>
                 <div class="education-item">
-                    [cite_start]<h4>HSC - 91.00% [cite: 7]</h4>
-                    <span>Shri Tripura Junior Science College, Latur | [cite_start]2020-2021 [cite: 7]</span>
+                    <h4>HSC - 91.00%</h4>
+                    <span>Shri Tripura Junior Science College, Latur | 2020-2021</span>
                 </div>
             </div>
 
             <h3 style="color: var(--secondary-color); margin-top: 40px; border-bottom: 1px solid var(--card-color); padding-bottom: 5px;">Certifications</h3>
             <div class="education-list">
                 <div class="education-item">
-                    [cite_start]<h4>Basics of Python - Infosys Springboard [cite: 24]</h4>
-                    [cite_start]<span>Awarded: Feb 2024 [cite: 24]</span>
-                    [cite_start]<p style="margin-top: 10px; font-size: 0.95rem;">Gained foundational knowledge of Python programming, control structures, and basic data handling[cite: 25]. [cite_start]Strengthened problem-solving and logical thinking skills essential for data science applications[cite: 26].</p>
+                    <h4>Basics of Python - Infosys Springboard</h4>
+                    <span>Awarded: Feb 2024</span>
+                    <p style="margin-top: 10px; font-size: 0.95rem;">Gained foundational knowledge of Python programming, control structures, and basic data handling. Strengthened problem-solving and logical thinking skills essential for data science applications.</p>
                 </div>
             </div>
         </section>
