@@ -1,209 +1,994 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sohel Maniyar — Data Science Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1724; /* dark navy */
-      --card:#0b1220;
-      --muted:#9aa4b2;
-      --glass: rgba(255,255,255,0.04);
-      --accent-a:#1a73e8; /* google blue */
-      --accent-b:#ea4335; /* google red */
-      --accent-c:#fbbc05; /* google yellow */
-      --accent-d:#34a853; /* google green */
-      --glass-2: rgba(255,255,255,0.03);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#e6eef6;background:linear-gradient(180deg,#071021 0%, #071827 60%);-webkit-font-smoothing:antialiased}
-    .container{max-width:1100px;margin:40px auto;padding:28px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sohel Maniyar | Data Scientist & ML Engineer</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* CSS Variables for Dark Mode Theme */
+        :root {
+            --primary-bg: #0A192F;
+            --secondary-bg: #112240;
+            --accent: #64FFDA;
+            --accent-light: rgba(100, 255, 218, 0.1);
+            --text-primary: #E6F1FF;
+            --text-secondary: #8892B0;
+            --card-bg: rgba(17, 34, 64, 0.6);
+            --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
 
-    /* header */
-    header{display:flex;gap:20px;align-items:center;background:linear-gradient(180deg,var(--glass),transparent);padding:18px;border-radius:14px;backdrop-filter: blur(6px);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
-    .avatar{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:40px;color:white;position:relative;flex-shrink:0;margin-left:6px}
-    /* multicolor "S" like google */
-    .avatar{background:conic-gradient(from 200deg,var(--accent-a),var(--accent-b) 95deg,var(--accent-c) 165deg,var(--accent-d) 260deg,var(--accent-a));box-shadow:0 8px 24px rgba(2,6,23,0.6);transform:translateZ(0);}
-    .header-info{flex:1}
-    .name{font-size:20px;font-weight:800;margin:0}
-    .role{margin:6px 0;color:var(--muted);font-weight:600}
-    .contact{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
-    .contact a{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.03)}
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* layout */
-    main{display:grid;grid-template-columns: 1fr 380px;gap:22px;margin-top:20px}
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* about card */
-    .card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.01));padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.02)}
-    h3{margin:0 0 12px 0}
-    p.lead{color:var(--muted);line-height:1.5}
-    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;font-weight:600;color:var(--muted);font-size:13px}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* projects */
-    .projects{display:grid;gap:12px}
-    .project-card{display:flex;flex-direction:column;padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);transition:transform .25s ease,box-shadow .25s ease;position:relative;overflow:hidden}
-    .project-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
-    .project-title{font-weight:700}
-    .project-desc{color:var(--muted);font-size:14px;margin:8px 0 14px}
-    .project-meta{display:flex;gap:10px;flex-wrap:wrap}
-    .btns{margin-top:auto;display:flex;gap:10px}
-    .btn{padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.04)}
-    .btn-outline{background:transparent;color:var(--muted)}
-    .btn-live{background:linear-gradient(90deg,var(--accent-a),var(--accent-d));color:white;box-shadow:0 8px 24px rgba(26,115,232,0.14);border:none;animation:pop 1.6s ease-in-out infinite;}
-    @keyframes pop{0%{transform:translateY(0)}50%{transform:translateY(-3px)}100%{transform:translateY(0)}}
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
 
-    /* highlight ribbon */
-    .ribbon{position:absolute;right:-42px;top:12px;transform:rotate(30deg);background:linear-gradient(90deg,var(--accent-b),var(--accent-a));padding:6px 62px;color:white;font-weight:700;font-size:12px;border-radius:6px;box-shadow:0 6px 20px rgba(0,0,0,0.35)}
+        ul {
+            list-style: none;
+        }
 
-    /* sidebar */
-    aside .card{position:sticky;top:28px}
-    .socials{display:flex;gap:10px;margin-top:12px}
-    .socials a{display:inline-flex;padding:10px;border-radius:10px;background:var(--glass-2);text-decoration:none;color:var(--muted);font-weight:700}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    /* footer */
-    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+        section {
+            padding: 5rem 0;
+        }
 
-    /* responsive */
-    @media (max-width:900px){main{grid-template-columns:1fr;}.avatar{width:84px;height:84px;font-size:36px}.container{padding:18px}}
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
 
-    /* small animation on load */
-    .fade-in{opacity:0;transform:translateY(8px);animation:fadeIn .6s ease forwards}
-    .delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.28s}
-    @keyframes fadeIn{to{opacity:1;transform:none}}
-  </style>
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 20%;
+        }
+
+        .highlight {
+            color: var(--accent);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--accent-light);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+        }
+
+        .btn-cta {
+            background-color: var(--accent);
+            color: var(--primary-bg);
+            font-weight: 600;
+        }
+
+        .btn-cta:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        .btn-cta::before {
+            display: none;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .hero-text h2 {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 550px;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .contact-info a {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Monogram */
+        .monogram-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .monogram {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: var(--secondary-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9rem;
+            font-weight: 700;
+            color: var(--accent);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(100, 255, 218, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(100, 255, 218, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(100, 255, 218, 0.3); }
+        }
+
+        .monogram:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(100, 255, 218, 0.6);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .institution {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .score {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-light);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            padding: 2rem 2rem 1rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-stack span {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.7rem;
+            background-color: var(--secondary-bg);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        .project-details {
+            padding: 0 2rem 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-details p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-features li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-features li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .project-links {
+            padding: 1.5rem 2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .project-links a {
+            flex: 1;
+        }
+
+        /* Certificate Section */
+        .certificate-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .certificate-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .certificate-card .issuer {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .certificate-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            width: 150px;
+            transition: var(--transition);
+        }
+
+        .contact-icon:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-light);
+        }
+
+        .contact-icon i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .contact-icon span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-bottom: 3rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-bg);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0 0 1.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.5rem;
+            }
+
+            .monogram {
+                width: 200px;
+                height: 200px;
+                font-size: 6rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-links a {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text h2 {
+                font-size: 1.3rem;
+            }
+
+            .monogram {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+
+            .contact-icon {
+                width: 130px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header class="fade-in delay-1">
-      <div class="avatar" aria-hidden="true">S</div>
-      <div class="header-info">
-        <h1 class="name">Sohel Maniyar</h1>
-        <div class="role">Aspiring Data Scientist • Fresh Graduate (B.Tech 2025)</div>
-        <div class="contact">
-          <div>📞 +91 9696680808</div>
-          <div>✉️ <a href="mailto:contactsohel22@gmail.com">contactsohel22@gmail.com</a></div>
-          <div>🔗 <a href="https://linkedin.com/in/sohel-maniyar" target="_blank" rel="noopener">linkedin.com/in/sohel-maniyar</a></div>
-          <div>💻 <a href="https://github.com/Maniyar07" target="_blank" rel="noopener">github.com/Maniyar07</a></div>
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">S</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificate">Certificate</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-        <a class="btn" href="mailto:contactsohel22@gmail.com">Contact</a>
-        <a class="btn btn-outline" href="#projects">View Projects</a>
-      </div>
     </header>
 
-    <main>
-      <section>
-        <div class="card fade-in delay-2">
-          <h3>Profile</h3>
-          <p class="lead">Proficient in Python and Data Structures & Algorithms with hands-on practice in Data Science, Machine Learning, and real-world problem solving. Passionate about building data-driven solutions and growing into a Senior Data Scientist role.</p>
-
-          <h3 style="margin-top:18px">Skills</h3>
-          <div class="chips">
-            <div class="chip">Python</div>
-            <div class="chip">SQL</div>
-            <div class="chip">NumPy</div>
-            <div class="chip">Pandas</div>
-            <div class="chip">Scikit-learn</div>
-            <div class="chip">Matplotlib</div>
-            <div class="chip">Flask</div>
-          </div>
-
-          <h3 style="margin-top:18px">Education</h3>
-          <p style="margin:6px 0 0;color:var(--muted)"><strong>TPCT'S College of Engineering, Osmanabad</strong> — B.Tech (2021–2025) • CGPA: 7.24</p>
-          <p style="margin:6px 0 0;color:var(--muted)"><strong>Shri Tripura Junior Science College, Latur</strong> — HSC (2020–2021) • 91%</p>
-
-          <h3 style="margin-top:18px">Certificate</h3>
-          <p style="margin:6px 0 0;color:var(--muted)">Basics of Python — Infosys Springboard (Feb 2024)</p>
-        </div>
-
-        <div id="projects" class="projects" style="margin-top:14px">
-
-          <!-- Example project card generated from resume -->
-          <div class="project-card card fade-in delay-3">
-            <div class="ribbon">Featured</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-              <div>
-                <div class="project-title">Diabetes Risk Prediction Web App</div>
-                <div class="project-desc">A full-stack deployment of a binary classification ML model using Flask. Includes model integration (.pkl), a backend prediction pipeline, and deployment on PythonAnywhere.</div>
-                <div class="project-meta" style="margin-top:8px;color:var(--muted);font-size:13px">Tech: Python • Flask • Scikit-learn • NumPy • HTML/CSS • PythonAnywhere</div>
-              </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+                <h1>Sohel Maniyar</h1>
+                <h2>Data Scientist & ML Engineer</h2>
+                <p>Proficient in Python programming and Data Structures & Algorithms with strong analytical skills. Currently pursuing expertise in Data Science, Machine Learning, and AI, with hands-on practice in real-world problem solving.</p>
+                <p>Passionate about leveraging data-driven insights to create impactful solutions. Future goal is to grow into a skilled Senior Data Scientist.</p>
+                <div class="contact-info">
+                    <a href="tel:+919696680808"><i class="fas fa-phone"></i> +91 9696680808</a>
+                    <a href="mailto:contactsohel22@gmail.com"><i class="fas fa-envelope"></i> contactsohel22@gmail.com</a>
+                    <a href="https://linkedin.com/in/sohel-maniyar" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/Maniyar07" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+                <a href="#projects" class="btn" style="margin-top: 1.5rem;">View My Projects</a>
             </div>
-
-            <div class="btns" style="margin-top:14px">
-              <a class="btn btn-outline" href="https://github.com/Maniyar07/Flask-Diabetes-Prediction-App" target="_blank" rel="noopener">Source Code ↗</a>
-              <a class="btn btn-live" href="https://sohel08.pythonanywhere.com/" target="_blank" rel="noopener">Live Demo ↗</a>
+            <div class="monogram-container" data-aos="fade-left" data-aos-duration="1000">
+                <div class="monogram">S</div>
             </div>
-          </div>
+        </div>
+    </section>
 
-          <!-- A flexible template card (duplicate & edit for more projects) -->
-          <div class="project-card card fade-in" style="--delay:.36s">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <div>
-                <div class="project-title">Project — Add your project title</div>
-                <div class="project-desc">Short description of the project, what problem it solves, your role, and key results or metrics.</div>
-                <div class="project-meta" style="margin-top:8px;color:var(--muted);font-size:13px">Tech: e.g., Python · Pandas · ML</div>
-              </div>
+    <!-- About & Education Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>About & <span class="highlight">Education</span></h2>
             </div>
-            <div class="btns">
-              <a class="btn btn-outline" href="#" target="_blank" rel="noopener">Source Code ↗</a>
-              <a class="btn btn-live" href="#" target="_blank" rel="noopener">Live Demo ↗</a>
+            <div class="about-content" data-aos="fade-up" data-aos-duration="1000">
+                <div class="about-text">
+                    <p>I'm a passionate Data Science and Machine Learning enthusiast currently completing my Bachelor's degree in Technology. With a strong foundation in Python, algorithms, and statistical analysis, I'm focused on developing practical ML solutions that solve real-world problems.</p>
+                    <p>My approach combines technical expertise with problem-solving skills to transform data into actionable insights. I'm particularly interested in model deployment and creating end-to-end ML applications that bridge the gap between data science and practical implementation.</p>
+                </div>
+                <div class="education">
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Bachelor of Technology</h3>
+                        <div class="institution">TPCT's College of Engineering, Osmanabad</div>
+                        <div class="period">2021 - 2025</div>
+                        <div class="score">CGPA: 7.24</div>
+                    </div>
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="300">
+                        <h3>Higher Secondary Certificate (HSC)</h3>
+                        <div class="institution">Shri Tripura Junior Science College, Latur</div>
+                        <div class="period">March 2021</div>
+                        <div class="score">Percentage: 91.00%</div>
+                    </div>
+                    <div class="education-item" data-aos="fade-up" data-aos-delay="400">
+                        <h3>Secondary School Certificate (SSC)</h3>
+                        <div class="institution">Dnyaneshwar High School, Latur</div>
+                        <div class="period">March 2019</div>
+                        <div class="score">Percentage: 86.00%</div>
+                    </div>
+                </div>
             </div>
-          </div>
-
         </div>
-      </section>
+    </section>
 
-      <aside>
-        <div class="card fade-in delay-2">
-          <h3>Contact & Links</h3>
-          <div style="margin-top:8px;color:var(--muted);font-size:14px">I'm open to internships and entry-level data roles. Reach out for code walkthroughs, technical interviews, or collaborations.</div>
-
-          <div class="socials">
-            <a href="mailto:contactsohel22@gmail.com">Email</a>
-            <a href="https://linkedin.com/in/sohel-maniyar" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://github.com/Maniyar07" target="_blank" rel="noopener">GitHub</a>
-          </div>
-
-          <h3 style="margin-top:14px">Quick Facts</h3>
-          <ul style="color:var(--muted);padding-left:18px;margin:8px 0 0">
-            <li>Graduation: 2025</li>
-            <li>Looking for: Data Science / ML roles (Fresher)</li>
-            <li>Languages: Python, SQL</li>
-          </ul>
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: rgba(10, 25, 47, 0.5);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Technical <span class="highlight">Skills</span></h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category" data-aos="fade-up" data-aos-duration="1000">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">SQL</div>
+                        <div class="skill-tag">Data Structures</div>
+                        <div class="skill-tag">Algorithms</div>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h3><i class="fas fa-chart-line"></i> Data Science</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">Exploratory Data Analysis (EDA)</div>
+                        <div class="skill-tag">Machine Learning</div>
+                        <div class="skill-tag">Scikit-learn</div>
+                        <div class="skill-tag">NumPy</div>
+                        <div class="skill-tag">Pandas</div>
+                        <div class="skill-tag">Matplotlib</div>
+                        <div class="skill-tag">Seaborn</div>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h3><i class="fas fa-laptop-code"></i> Development</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">Flask</div>
+                        <div class="skill-tag">HTML/CSS</div>
+                        <div class="skill-tag">Web Service Deployment</div>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <h3><i class="fas fa-tools"></i> Tools & Practices</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">Git</div>
+                        <div class="skill-tag">GitHub</div>
+                        <div class="skill-tag">CI/CD Pipelines</div>
+                        <div class="skill-tag">PythonAnywhere</div>
+                        <div class="skill-tag">Version Control</div>
+                    </div>
+                </div>
+                <div class="skill-category" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skills-list">
+                        <div class="skill-tag">Problem-solving</div>
+                        <div class="skill-tag">Communication</div>
+                        <div class="skill-tag">Teamwork</div>
+                        <div class="skill-tag">Time Management</div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card fade-in" style="margin-top:12px">
-          <h3>Resume</h3>
-          <p style="color:var(--muted);margin:6px 0">Download a PDF version or view an expanded resume for more details.</p>
-          <div style="display:flex;gap:10px;margin-top:8px">
-            <a class="btn btn-outline" href="#" onclick="alert('Attach or link your resume PDF here')">Download</a>
-            <a class="btn" href="#" onclick="alert('Add a link to your full resume or LinkedIn')">View</a>
-          </div>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2><span class="highlight">Projects</span> Portfolio</h2>
+            </div>
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="project-header">
+                        <h3>Diabetes Risk Prediction Web Application</h3>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>Scikit-learn</span>
+                            <span>NumPy</span>
+                            <span>HTML/CSS</span>
+                            <span>PythonAnywhere</span>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <p>A full-stack deployment of a binary classification machine learning model, utilizing Flask for the web service layer.</p>
+                        <ul class="project-features">
+                            <li>Designed and implemented a robust Flask application with dedicated routing (/predict) to serve the front-end and handle prediction requests.</li>
+                            <li>Successfully loaded a pre-trained Scikit-learn model (.pkl file) and engineered the data pipeline to receive 8 distinct health features from the user.</li>
+                            <li>Ensured data integrity before prediction through comprehensive validation.</li>
+                            <li>Managed deployment on PythonAnywhere, troubleshooting critical file path and server configuration issues.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Maniyar07/Flask-Diabetes-Prediction-App" target="_blank" class="btn">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                        <a href="https://sohel08.pythonanywhere.com/" target="_blank" class="btn btn-cta">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="project-header">
+                        <h3>Employee Attrition Prediction System</h3>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>Scikit-learn</span>
+                            <span>Decision Tree</span>
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                            <span>HTML/CSS</span>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <p>Developed a full-stack Binary Classification ML model to predict employee attrition risk, enabling proactive HR retention strategies.</p>
+                        <ul class="project-features">
+                            <li>Implemented a Flask web service (app.py) with dedicated routing to serve the model and handle real-time prediction requests.</li>
+                            <li>Successfully loaded the trained_model.pkl artifact and its dependencies (encoders.pkl, columns.pkl) for consistent data preprocessing.</li>
+                            <li>Trained and optimized a Decision Tree Classifier achieving high predictive accuracy.</li>
+                            <li>Managed the end-to-end deployment on PythonAnywhere, ensuring reliable service availability.</li>
+                        </ul>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Maniyar07/Employee-Attrition-Prediction-System" target="_blank" class="btn">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                        <a href="https://sohel10.pythonanywhere.com/" target="_blank" class="btn btn-cta">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </aside>
-    </main>
+    </section>
 
+    <!-- Certificate Section -->
+    <section id="certificate">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2><span class="highlight">Certificate</span></h2>
+            </div>
+            <div class="certificate-card" data-aos="fade-up" data-aos-duration="1000">
+                <h3>Basics of Python</h3>
+                <span class="issuer">Infosys Springboard | February 2024</span>
+                <p>Gained foundational knowledge of Python programming including syntax, control structures, functions, and basic data handling. Strengthened problem-solving and logical thinking skills essential for software development and data science applications.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: rgba(10, 25, 47, 0.5);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Get In <span class="highlight">Touch</span></h2>
+            </div>
+            <div class="contact-content" data-aos="fade-up" data-aos-duration="1000">
+                <p>I'm currently seeking opportunities as a Data Scientist or ML Engineer. Feel free to reach out if you're looking for a passionate fresher with strong technical skills and a drive to create impactful data solutions.</p>
+                <a href="mailto:contactsohel22@gmail.com" class="btn btn-cta" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </a>
+                <div class="contact-icons">
+                    <a href="tel:+919696680808" class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9696680808</span>
+                    </a>
+                    <a href="mailto:contactsohel22@gmail.com" class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                        <span>contactsohel22@gmail.com</span>
+                    </a>
+                    <a href="https://linkedin.com/in/sohel-maniyar" target="_blank" class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Maniyar07" target="_blank" class="contact-icon">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-      Built with ❤️ • Sohel Maniyar • Data Science Portfolio
+        <div class="container">
+            <p>&copy; 2024 Sohel Maniyar. All Rights Reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: #64FFDA;"></i> as a modern portfolio for Data Science professionals</p>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // Simple reveal for elements with .fade-in already added (keeps it lightweight)
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const href=a.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
-        }
-      })
-    });
-  </script>
+    <!-- AOS Animation Library & Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            easing: 'ease-in-out',
+            once: false
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
